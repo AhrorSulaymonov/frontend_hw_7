@@ -1,20 +1,17 @@
 let products = [];
-let currentView = "table"; // Dastlabki ko‘rinish
+let currentView = "table";
 
-// Ma'lumotlarni API dan olish
 async function fetchData() {
   const response = await fetch("https://fakestoreapi.com/products");
   products = await response.json();
-  renderView(); // Ma'lumotlar yuklanganda dastlabki ko‘rinishni chizish
+  renderView();
 }
 
-// Ko‘rinishni almashtirish funksiyasi
 function switchView(view) {
   currentView = view;
   renderView();
 }
 
-// Table ko‘rinishi
 function renderTable() {
   const content = document.getElementById("content");
   content.innerHTML = `
@@ -43,7 +40,6 @@ function renderTable() {
   `;
 }
 
-// Vertical Card ko‘rinishi
 function renderVerticalCards() {
   const content = document.getElementById("content");
   content.innerHTML = `
@@ -105,7 +101,6 @@ function renderVerticalCards() {
   `;
 }
 
-// Horizontal Card ko‘rinishi
 function renderHorizontalCards() {
   const content = document.getElementById("content");
   content.innerHTML = `
@@ -167,7 +162,6 @@ function renderHorizontalCards() {
   `;
 }
 
-// Joriy ko‘rinishni chizish
 function renderView() {
   if (currentView === "table") {
     renderTable();
@@ -178,5 +172,4 @@ function renderView() {
   }
 }
 
-// Dastur boshlanganda ma'lumotlarni yuklash
 fetchData();
